@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Answer Evaluation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>
+        AI Answer Evaluation
+    </h1>
+
+    <form method="POST">
+
+        <textarea
+            name="answer"
+            rows="10"
+            cols="60"
+            placeholder="Type your interview answer here..."
+            required>
+        </textarea>
+
+        <br><br>
+
+        <button type="submit">
+
+            Evaluate Answer
+
+        </button>
+
+    </form>
+
+    {% if result %}
+
+        <h2>
+            Evaluation Result
+        </h2>
+
+        <h3>
+            Communication Score:
+            {{ result.communication }}/10
+        </h3>
+
+        <h3>
+            Technical Score:
+            {{ result.technical }}/10
+        </h3>
+
+        <h3>
+            Confidence Score:
+            {{ result.confidence }}/10
+        </h3>
+
+        <h3>
+            Feedback
+        </h3>
+
+        <ul>
+
+            {% for item in result.feedback %}
+
+                <li>
+                    {{ item }}
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+    {% endif %}
+
+</body>
+
+</html>

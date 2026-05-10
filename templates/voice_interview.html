@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Voice Interview</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>AI Voice Interview</h1>
+
+    <h2 id="question">
+        Tell me about yourself
+    </h2>
+
+    <button onclick="startListening()">
+        Start Speaking
+    </button>
+
+    <h3>Your Answer:</h3>
+
+    <p id="output"></p>
+
+    <script>
+
+        function startListening() {
+
+            const recognition =
+                new webkitSpeechRecognition();
+
+            recognition.lang = "en-US";
+
+            recognition.start();
+
+            recognition.onresult = function(event) {
+
+                const text =
+                    event.results[0][0].transcript;
+
+                document.getElementById(
+                    "output"
+                ).innerHTML = text;
+            };
+        }
+
+    </script>
+
+</body>
+
+</html>

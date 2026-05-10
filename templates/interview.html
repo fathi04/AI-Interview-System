@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Interview Questions</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <h2>AI Interview Questions</h2>
+
+    {% for question in questions %}
+
+        <p>
+
+            {{ loop.index }}.
+            {{ question }}
+
+        </p>
+
+    {% endfor %}
+
+    <a href="/dashboard">
+
+        <button>
+            Back
+        </button>
+
+    </a>
+
+</body>
+
+</html>
